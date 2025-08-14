@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Nobilis Character Builder</title>
+<link rel="stylesheet" href="styles.css">
+ <!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+ <!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="module">import {InputSpinner} from "./src/InputSpinner.js"
+
+const inputSpinnerElements = document.querySelectorAll("input[type='number']")
+for (const inputSpinnerElement of inputSpinnerElements) {
+    new InputSpinner(inputSpinnerElement)
+}</script>
+
+</head>
+<body onload="pointsRemaining()">
+
+<div class="tab">
+    <button class="tablinks" onclick="openAttribute(event, 'Ability')" id="defaultOpen">Ability</button>
+    <button class="tablinks" onclick="openAttribute(event, 'Aspect')" id="aspectButton">Aspect</button>
+    <button class="tablinks" onclick="openAttribute(event, 'Domain')" id="domainButton">Domain</button>
+    <button class="tablinks" onclick="openAttribute(event, 'Persona')" id="personaButton">Persona</button>
+    <button class="tablinks" onclick="openAttribute(event, 'Flore')" id="floreButton">Flore</button>
+    <button class="tablinks" onclick="openAttribute(event, 'Other')">Geasa and Bonds</button>
+    <button id="charPointsRemaining", class="tablinks">Character Points Remaining: 25</button>
+    <button id="resetbutton", class="tablinks">Reset</button>
+  </div>
+
+  <div class="optionthing">
+    <input type="checkbox" id="toggle" class="toggleCheckbox", onclick="pointsRemaining()"/>
+    <label for="toggle" class='toggleContainer'>
+      <div>Valor</div>   
+      <div>Deserts</div>
+    </label>
+  </div>
+  
+  <!-- Tab content -->
+  <div id="Ability" class="tabcontent">
+    <h3>Ability</h3>
+    <p>Ability covers your capacity to do everything that isn't a miracle. It is bought for 1 CP per level.<br>You should come up with a short list of things that your character is familiar with doing from their previous life.</p>
+    <p>At Aspect level 3, (Greater) Well-Met and Function are always free, regardless of your Ability.</p>
+    <label for="abilityRating">Rating:</label>
+    
+    <div class ="inputholder">
+      <input type="number" id="abilityRating" name="abilityRating" min="0" max="12", value="0" onchange="pointsRemaining()" data-numspin>
+    </div>
+    <p id="abilitycosttag">Without Cost, you can use...</p>
+
+    <p id="abilitytitle", class="powerhead"></p>
+    <p id="abilitydesc", class="powerdesc"></p>
+    <p id="abilityex", class="powerex"></p>
+
+    <p id="abilitygtitle", class="powerhead"></p>
+    <p id="abilitygdesc", class="powerdesc"></p>
+    <p id="abilitygex", class="powerex"></p>
+  </div>
+  
+  <div id="Aspect" class="tabcontent">
+    <h3>Aspect</h3>
+
+    <p>Your ability to push beyond mortal capacities. Note that Aspect <i>cannot</i> be used to enhance magical actions. If you want to be a wizard, use Flore or get a Bond! It is bought for 2 CP per level.</p>
+
+    <label for="aspectRating">Rating:</label>
+    <div class ="inputholder">
+      <input type="number" id="aspectRating" name="aspectRating" min="0" max="12", value="0" onchange="pointsRemaining()" data-numspin>
+    </div>
+    <p id="aspectcosttag">Without Cost, you can use...</p>
+
+    <p id="aspecttitle", class="powerhead"></p>
+    <p id="aspectdesc", class="powerdesc"></p>
+    <p id="aspectex", class="powerex"></p>
+
+    <p id="aspectgtitle", class="powerhead"></p>
+    <p id="aspectgdesc", class="powerdesc"></p>
+    <p id="aspectgex", class="powerex"></p>
+  </div>
+  
+  <div id="Domain" class="tabcontent">
+    <h3>Domain</h3>
+    <p>Your connection to your Estate and ability to wield it directly - hear its voice, protect it and command it. It is bought for 2 CP per level.</p>
+
+    <label for="domainRating">Rating:</label>
+    <div class ="inputholder">
+      <input type="number" id="domainRating" name="domainRating" min="0" max="12", value="0" onchange="pointsRemaining()">
+    </div>
+
+    <p id="domaincosttag">Without Cost, you can use...</p>
+
+    <p id="domaintitle", class="powerhead"></p>
+    <p id="domaindesc"></p>
+    <p id="domainex", class="powerex"></p>
+
+    <p id="domaingtitle", class="powerhead"></p>
+    <p id="domaingdesc", class="powerdesc"></p>
+    <p id="domaingex", class="powerex"></p>
+  </div>
+
+  <div id="Persona" class="tabcontent">
+    <h3>Persona</h3>
+    <p>Your power to embody your Estate and make the world play by your Estate's rules instead of its own. It is not strictly good for you to be good at this. It is bought for 2 CP per level.</p>
+    <p>Persona relies heavily on your Estate Properties (3-7 statements about your Estate that you come up with). Since I don't know what those are, the examples will sometimes use Properties from Estates of Debate and Horses instead.</p>
+    <div class="estateprops">
+      <div class="card">
+        <div class="card-body">
+        <h6 class="card-title">Debate...</h5>
+          ... Cannot be studied or observed.<br>
+          ... Should not exist, by any known law.<br>
+          ... Must exist, if you can see the signs.<br>
+          ... Presents incomplete answers to unfathomable mysteries.
+        </div>
+      </div>
+      <div class="card" id="horsecard">
+        <div class="card-body">
+        <h6 class="card-title">Horses...</h5>
+          ... Carry great burdens.<br>
+          ... Go swift as the wind.<br>
+          ... Freak out at the slightest provocation.<br>
+          ... Are powered by oats.<br>
+        </div>
+      </div>
+
+    </div>
+
+    <label for="personaRating">Rating:</label>
+    <div class ="inputholder">
+      <input type="number" id="personaRating" name="personaRating" min="0" max="12", value="0" onchange="pointsRemaining()">
+    </div>
+
+    <p id="personacosttag">Without Cost, you can use...</p>
+
+    <p id="personatitle", class="powerhead"></p>
+    <p id="personadesc"></p>
+    <p id="personaex", class="powerex"></p>
+
+    <p id="personagtitle", class="powerhead"></p>
+    <p id="personagdesc", class="powerdesc"></p>
+    <p id="personagex", class="powerex"></p>
+  </div>
+
+  <div id="Flore" class="tabcontent">
+    <h3>Flore</h3>
+    <p>Your power to wield a panoply of legendary artifacts, spells, pets and servants. It is bought for 2 CP per level.</p>
+
+    <label for="floreRating">Rating:</label>
+    <div class ="inputholder">
+      <input type="number" id="floreRating" name="floreRating" min="0" max="12", value="0" onchange="pointsRemaining()">
+  </div>
+
+    <p id="florecosttag">Without Cost, you can use...</p>
+
+    <p id="floretitle", class="powerhead"></p>
+    <p id="floredesc"></p>
+    <p id="floreex", class="powerex"></p>
+
+    <p id="floregtitle", class="powerhead"></p>
+    <p id="floregdesc", class="powerdesc"></p>
+    <p id="floregex", class="powerex"></p>
+  </div>
+
+  <div id="Other" class="tabcontent">
+    <h3>Gifts, Geasa and Bonds</h3>
+
+    <p>Gifts, Geasa and Bonds are what you buy when you want to have some kind of mythic quality that goes beyond the scope of your
+       divine attributes. They’re what you take when you want to turn people to stone with your gaze, to have skin as hard as steel,
+        to be able to stretch and squash your body to like a cartoon character, to be bound to uphold any promise you make, to turn
+         the world to rot and nightmare where you sleep, to be a vampire, or a shapeshifter, or use magic. To be an uncatchable thief,
+          to be a blind swordmaster, to deliver the mail - rain and snow and gloom of night be damned. In general, they should be notable
+           and pretty obvious - the sorts of things people would include if they were telling stories about you.</p>
+
+
+      <div class="card" id="giftcard">
+        <div class="card-body">
+        <h6 class="card-title">Gifts</h6>
+          <p>Gifts are best for actively invoked custom powers and broad defenses. They are miracles, bought individually, that you can use as you would any other. Note that as a result, defense-oriented gifts can be beaten by superior miracles unless their effect level is bought up with Cost.</p>
+          <ul>
+            <li><i>Someone pushes you into a wheat thresher. You invoke <b>Durant</b> and describe how the thresher breaks 
+            against your skin, leaving you unharmed.</i></li>
+            <li><i>You have a custom gift that grants a year of good luck to anyone you wink at. Wink!</i></li>
+            <li><i>Your <b>Elusive</b> gift allows you to ignore most effects that would seek to transform you. But when your Strategist frenemy uses the much more powerful <b>Greater Infusion</b> to empower you with the spirit of a fearsome λ-Lion, you still end up with adorable cat ears. Without this gift, it probably would have been a lot worse.</i></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" id="geascard">
+        <div class="card-body">
+        <h6 class="card-title">Geasa</h6>
+          <p>Geasa are rules of the universe - passively invoking miracles their own behalf to remain true and to protect themselves. They're useful not just for giving yourself powers, but also for setting limits on yourself to create a more interesting story. When they get you in trouble, they assist with cost recovery. They cost 1 CP each.</p>
+          <details>
+
+            <summary>Example Geasa</summary>
+            <ul><i>
+            <li>My targets must rakishly confess once I expose them.</li>
+            <li>I must be reborn from the dreams of my Imperator.</li>
+            <li>My theme music starts playing in times of extreme drama.</li>
+            <li>Everyone in the world knows my name.</li>
+            <li>I'm welcome everywhere.</li>
+            <li>I must grant three days hospitality to anyone who asks.</li>
+            <li>I will die at 9:45 AM on June 3rd 2031.</li>
+            <li>I can’t break my word.</li>
+            <li>When liberty is harmed, so am I.</li>
+            <li>I own a house everywhere I visit.</li>
+            <li>I’m the best dancer in the world.</li>
+            <li>My eyes give my inhuman nature away.</li>
+            <li>I change shapes when wet.</li>
+            <li>My coming is heralded by a heavenly choir.</li>
+            <li>I can only be wounded by someone pure of heart.</li>
+            <li>I can’t be seen when standing in the shadows.</li>
+            <li>My touch burns the substance of the world away.</li>
+            </ul></i>
+        
+          </details>
+          </div>
+      </div>
+
+      <div class="card" id="bondcard">
+        <div class="card-body">
+        <h6 class="card-title">Bonds</h6>
+          <p>When you take Ability actions, you’re constrained by human capacities. If you know fire magic, it <i>works</i>, but is
+             probably harder and less convenient than just doing something with technology. Being blind is highly unlikely to make 
+             you better at sword fighting. However talented you are at escaping capture, dogged pursuit will wear you down eventually.
+              Putting your feelings into your cooking only ever rises to the level of metaphor.</p>
+
+        <p><b>Bonds</b> change that. They describe a truth that makes you in some way <i>exceptional</i> through the provision of 
+          a Technique - not on the level of gods, but in the way that Superior Skills and stuff like Nightmare Science worked in 
+          Chuubo’s - the realm of superpowers, cinematic talents, and sorcery.</p>
+
+        <p>Take a Bond and your fire magic becomes a useful tool for throwing fireballs around and seeing visions in flames. 
+          Being blind grants you immense situational awareness and peerless swordsmanship. If you can’t be caught, you now casually 
+          shake pursuit and slip out of handcuffs like they’re nothing. If you choose to bake your joy into a cake, that will be 
+          felt by those who eat it.</p>
+
+        <p>If your Technique isn't innately magical... that is, you could <i>claim</i> a human being could do it, even if not with a
+        straight face, you may perform it with perfection, grace and peerless skill using <b>Aspect</b> (as opposed to the cinematic
+        genius and narrative convenience available to Strategists through Eide).</p>
+
+        <p>Bonds grant +2 to your effective attribute rating  when their Truth applies, and their Technique gives you up to 3 Edge
+           in a mundane conflict. Like Geasa, when they get you into trouble, they aid in cost recovery. They cost 1 CP each.</p>
+          <details>
+      <summary>Example Bonds</summary>
+        <ul>
+          <li>I can’t handle running water or sunlight. Technique: Vampire Powers.</li>
+          <li>I'm a giant worm living in the corpse of my former body. Technique: Worm.</li>
+          <li>No one drives my car but me. Technique: Ace Driver.</li>
+          <li>My art is a living thing. Technique: Chalk Magic.</li>
+          <li>I just have no sense of direction. Technique: Wandering off.</li>
+          <li>Not rain, nor snow, nor gloom of night shall stay me from my appointed rounds. Technique: Postal Worker.</li>
+          <li>I can’t be caught. Technique: Escapology.</li>
+          <li>I serve the Song of Heaven. Technique: Holiness.</li>
+          <li>I’m heir to the Yatskaya Temple. Technique: Cat Speaker.</li>
+          <li>I have large, feathery wings. Technique: Flight.</li>
+          <li>My brother is a pain in the ass, but I love him. Technique: Big Sister.</li>
+          <li>Movies are the most important things in my life. Technique: Movie Magic.</li>
+        </ul>
+          </details>
+          </div>
+  </div>
+
+  <script type="text/javascript" src="main.js"></script>
+  <script type="module">
+  import {InputSpinner} from "./src/InputSpinner.js"
+  document.getElementById("resetbutton").onclick = function() {resetAll()};
+
+  function resetAll() {
+    document.getElementById("charPointsRemaining").innerHTML = "Character Points Remaining: 25";
+    const inputsarray = ['#abilityRating', '#aspectRating', '#domainRating', '#personaRating', '#floreRating']
+    for (const inputvalue of inputsarray) {
+      var $input = $(inputvalue)
+      $input.val(0)
+    }
+  }
+  </script>
+
+
+</body>
+</html>  
+

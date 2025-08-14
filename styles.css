@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.powerhead {
+    font-weight: bold;
+  }
+
+.powerex {
+    font-style: italic;
+  }
+
+* {
+  font-family: "Roboto", sans-serif;
+  } 
+
+.options {
+  display:flex
+}
+
+.optionthing {
+  padding: 0.7em 0.7em;
+}
+
+.testmodebox {
+  padding: 0.7em 0.7em;
+}
+
+.form-switch {
+  display:block;
+  padding-left:12em;
+}
+
+.inputholder {
+  display: block;
+  width: 10em;
+  margin-top:0.7em;
+  margin-bottom:0.7em;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.87em 1em;
+    transition: 0.3s;
+  }
+
+  .tab button::after {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 1px;
+    color: transparent;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  
+  .tab #aspectButton:hover {
+    background-color: #eed879;
+  }
+  .tab #domainButton:hover {
+    background-color: #67c069;
+  }
+  .tab #personaButton:hover {
+    background-color: #faaf6d;
+  }
+  .tab #floreButton:hover {
+    background-color: #824173;
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+
+  .tab #aspectButton.active {
+    background-color: #f3cf2f;
+  }
+  .tab #domainButton.active {
+    background-color: #19a31b;
+    color:white;
+  }
+  .tab #personaButton.active {
+    background-color: #ff7e0c;
+  }
+  .tab #floreButton.active {
+    background-color: #6e0957;
+    color:white;
+  }
+  .tab button.active {
+    background-color: #ccc;
+    text-shadow: -0.06ex 0 0 currentColor, 0.06ex 0 0 currentColor; 
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  } 
+
+.toggleCheckbox {
+   display: none;
+ }
+
+ .toggleContainer {
+   position: relative;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   width: fit-content;
+   border: 3px solid #343434;
+   border-radius: 20px;
+   background: #343434;
+   font-weight: bold;
+   color: #343434;
+   cursor: pointer;
+}
+
+.toggleContainer::before {
+   content: '';
+   position: absolute;
+   width: 50%;
+   height: 100%;
+   left: 0%;
+   border-radius:20px;
+   background: rgb(255, 255, 255);
+   transition: all 0.3s;
+}
+
+.toggleContainer div {
+   padding: 6px;
+   text-align: center;
+   z-index: 1;
+}
+
+.toggleCheckbox:checked + .toggleContainer::before {
+   left: 50%;
+}
+
+.toggleCheckbox:checked + .toggleContainer div:first-child{
+   color: white;
+   transition: color 0.3s;
+}
+.toggleCheckbox:checked + .toggleContainer div:last-child{
+   color: #343434;
+   transition: color 0.3s;
+}
+.toggleCheckbox + .toggleContainer div:first-child{
+   color: #343434;
+   transition: color 0.3s;
+}
+.toggleCheckbox + .toggleContainer div:last-child{
+   color: white;
+   transition: color 0.3s;
+}
+.estateprops{
+  display:flex;
+}
+#horsecard{
+  margin-left:1em;
+}
+.card{
+  margin-bottom:1em;
+}
+.card-body{
+  background-color:#f1f1f1;
+}
+#giftcard{
+  padding-bottom:1em;
+}
+#geascard{
+  margin-bottom:1em;
+}
+#bondcard{
+  margin-bottom:1em;
+}
